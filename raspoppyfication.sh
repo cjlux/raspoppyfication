@@ -68,7 +68,7 @@ poppy_hostname=${poppy_hostname:-"poppy"}
 git_branch=${git_branch:-"master"}
 shutdown_after_install=${shutdown_after_install:-0}
 
-url_root="https://www.gitlab.com/jlc/raspoppyfication/"
+url_root="https://github.com/cjlux/raspoppyfication/raw/master"
 
 wget "$url_root/setup-system.sh"
 bash setup-system.sh "$poppy_username" "$poppy_password" "$poppy_hostname"
