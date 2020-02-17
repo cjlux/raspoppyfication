@@ -66,11 +66,12 @@ poppy_username=${poppy_username:-"poppy"}
 poppy_password=${poppy_password:-"poppy"}
 poppy_hostname=${poppy_hostname:-"poppy"}
 git_branch=${git_branch:-"master"}
-shutdown_after_install=${shutdown_after_install:-0}
+reboot_after_install=${reboot_after_install:-0}
 
 url_root="https://github.com/cjlux/raspoppyfication/raw/master"
 
 wget "$url_root/setup-system.sh"
+wget "$url_root/hrpi-version-2.sh"
 bash setup-system.sh "$poppy_username" "$poppy_password" "$poppy_hostname"
 
 wget "$url_root/setup-python.sh"
@@ -87,6 +88,6 @@ echo -e "\e[33mChange hostname to \e[4m$poppy_hostname.\e[0m"
 sudo sed -i -e "s/raspberrypi/$poppy_hostname/" /etc/hostname
 sudo sed -i -e "s/raspberrypi/$poppy_hostname/g" /etc/hosts
 
-if [ $reboot_after_install -eq 1 ]; then
+if [ "$reboot_after_install" -eq 1 ]; then
   sudo reboot
 fi
