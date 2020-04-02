@@ -6,3 +6,4 @@ This deposit was initially just a way for me to save the state of the scripts I 
 
 I have begin to re-write the main script raspoppyfication.sh after the work was done on an RPi4, but I have not yet test if it works or not.
 
+I found taht the script setup-hotspot did'nt work but I had no time to debug it, so I just did the hostspot configuration "by hand"...
