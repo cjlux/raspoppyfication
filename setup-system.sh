@@ -52,9 +52,9 @@ system_setup()
     #JLC osbolete for RPi4> echo -e "\e[33mSetup serial communication.\e[0m"
     #JLC osbolete for RPi4> sudo raspi-config --disable-serial-log
     #JLC osbolete for RPi4> sudo tee --append /boot/config.txt > /dev/null <<EOF
-#JLC osbolete for RPi4> init_uart_clock=16000000
-#JLC osbolete for RPi4> dtoverlay=pi3-miniuart-bt
-#JLC osbolete for RPi4> EOF
+    #JLC osbolete for RPi4> init_uart_clock=16000000
+    #JLC osbolete for RPi4> dtoverlay=pi3-miniuart-bt
+    #JLC osbolete for RPi4> EOF
 }
 
 install_additional_packages()
@@ -66,7 +66,8 @@ install_additional_packages()
         network-manager \
         git \
         samba samba-common avahi-autoipd avahi-utils \
-        libxslt-dev
+        libxslt-dev \
+	python3-venv
 
     # board version utility
     #JLC obsolete for RPi4> wget https://github.com/damiencaselli/hrpi-version/archive/1.0.1.zip -O hrpi-version.zip
@@ -121,7 +122,9 @@ EOF
 EOF
 }
 
-#JLC osbolete> install_custom_raspiconfig
+if [ "$(hrpi-version)" = "rpi-3" ]; then
+    install_custom_raspiconfig
+fi    
 install_additional_packages
 setup_user "$username" "$password"
 system_setup
