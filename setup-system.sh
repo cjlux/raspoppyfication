@@ -8,13 +8,13 @@
 username=$1
 password=$2
 
-#JLC osbolete> install_custom_raspiconfig()
-#JLC osbolete> {
-#JLC osbolete>     wget https://raw.githubusercontent.com/poppy-project/raspi-config/master/raspi-config
-#JLC osbolete>     chmod +x raspi-config
-#JLC osbolete>     sudo chown root:root raspi-config
-#JLC osbolete>     sudo mv raspi-config /usr/bin/
-#JLC osbolete> }
+install_custom_raspiconfig()
+{
+    wget https://raw.githubusercontent.com/poppy-project/raspi-config/master/raspi-config
+    chmod +x raspi-config
+    sudo chown root:root raspi-config
+    sudo mv raspi-config /usr/bin/
+}
 
 setup_user()
 {
