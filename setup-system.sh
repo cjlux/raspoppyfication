@@ -3,7 +3,7 @@
 # version modified by JLC for RPi4 2020/02/13
 #
 # 2020/02/03 JLC install_custom_raspiconfig() seems to be obsolete for RPi4
-# 2020/04/07 JLC use $(hrpi-version) to do conditional process for rpi-3 and rpi-4
+# 2020/04/07 JLC use $(hrpi-version) to do conditional process for rpi-3, rpi-4 and buster
 
 username=$1
 password=$2
@@ -44,6 +44,9 @@ system_setup()
     sudo sed -i 's/^#\s*\(en_US.UTF-8 UTF-8\)/\1/g' /etc/locale.gen
     sudo sed -i 's/^#\s*\(fr_FR.UTF-8 UTF-8\)/\1/g' /etc/locale.gen
     sudo locale-gen
+
+    #JLC: don't know if the stuff bellow must be done with buster ??????
+    #JLC: => anyway it can always be done by typing "sudo raspi-config" in aterminal !
 
     #JLC osbolete for RPi4> echo -e "\e[33mEnable camera.\e[0m"
     #JLC osbolete for RPi4> echo "start_x=1" | sudo tee --append /boot/config.txt
