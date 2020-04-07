@@ -2,8 +2,8 @@
 
 # version modified by JLC for RPi4 2020/02/13
 #
-# install_custom_raspiconfig() seems to be obsolete for RPi4
-#
+# 2020/02/03 JLC install_custom_raspiconfig() seems to be obsolete for RPi4
+# 2020/04/07 JLC use $(hrpi-version) to do conditional process for rpi-3 and rpi-4
 
 username=$1
 password=$2
@@ -61,6 +61,7 @@ install_additional_packages()
 {
     sudo apt-get update
 
+    #JLC: added python3-venev & libatalas-base-dev for RaspBian buster:
     sudo apt-get install -y \
         build-essential unzip whois \
         network-manager \
@@ -71,12 +72,7 @@ install_additional_packages()
 	libatlas-base-dev
 
     # board version utility
-    #JLC: hrpi-version is replaced by the new version included in the zip file
-    #JLC obsolete for RPi4> wget https://github.com/damiencaselli/hrpi-version/archive/1.0.1.zip -O hrpi-version.zip
-    #JLC obsolete for RPi4> unzip hrpi-version.zip
-    #JLC osbolete for RPi4> rm hrpi-version.zip
-    #JLC osbolete for RPi4> rm -rf hrpi-version-1.0.1
-    
+    #JLC: hrpi-version comptaible rpi-3 & rpi-4 is replaced by the new version included in the zip file
     sudo cp hrpi-version-2.sh /usr/bin/hrpi-version
     sudo chmod +x /usr/bin/hrpi-version
 }
@@ -125,6 +121,7 @@ EOF
 EOF
 }
 
+#JLC: install_additional_packages is run first to make hrpi-version available:
 install_additional_packages
 if [ "$(hrpi-version)" = "rpi-3" ]; then
     install_custom_raspiconfig
