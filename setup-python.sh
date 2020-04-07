@@ -11,7 +11,13 @@ create_virtual_python_env()
 	    echo -e "\tvirtual python env already exists in $HOME/pyenv"
     else
 	    python3 -m venv $HOME/pyenv
-   fi
+    fi
+    #JLC: activate python environnement pyenv in poppy's .bashrc:
+    if ! grep -q '^source $HOME/pyenv/bin/activate$' $HOME/.bashrc; then
+    	echo "activating pyenv in poppy .bashrc"
+    	echo 'source $HOME/pyenv/bin/activate' >> $HOME/.bashrc
+    fi
+
 }
 
 install_python_packages()
