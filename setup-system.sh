@@ -67,15 +67,18 @@ install_additional_packages()
         git \
         samba samba-common avahi-autoipd avahi-utils \
         libxslt-dev \
-	python3-venv
+	python3-venv \
+	libatlas-base-dev
 
     # board version utility
+    #JLC: hrpi-version is replaced by the new version included in the zip file
     #JLC obsolete for RPi4> wget https://github.com/damiencaselli/hrpi-version/archive/1.0.1.zip -O hrpi-version.zip
     #JLC obsolete for RPi4> unzip hrpi-version.zip
-    sudo cp hrpi-version-2.sh /usr/bin/hrpi-version
-    sudo chmod +x /usr/bin/hrpi-version
     #JLC osbolete for RPi4> rm hrpi-version.zip
     #JLC osbolete for RPi4> rm -rf hrpi-version-1.0.1
+    
+    sudo cp hrpi-version-2.sh /usr/bin/hrpi-version
+    sudo chmod +x /usr/bin/hrpi-version
 }
 
 setup_network_tools()
@@ -122,10 +125,10 @@ EOF
 EOF
 }
 
+install_additional_packages
 if [ "$(hrpi-version)" = "rpi-3" ]; then
     install_custom_raspiconfig
-fi    
-install_additional_packages
+fi
 setup_user "$username" "$password"
 system_setup
 setup_network_tools
