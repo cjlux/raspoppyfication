@@ -15,7 +15,7 @@ Log in your Raspberry Pi. You can connect via ssh, VNC or directly plug a screen
 The following **requires the Raspberry Pi to have an internet access**.
 
 ```bash
-curl -L https://raw.githubusercontent.com/cjlux/raspoppyfication/master/raspoppyfication.sh -o /tmp/raspoppyfication.sh -o /tmp/raspoppyfication.sh
+curl -L https://raw.githubusercontent.com/cjlux/raspoppyfication/master/raspoppyfication.sh -o /tmp/raspoppyfication.sh
 chmod +x /tmp/raspoppyfication.sh
 sudo /tmp/raspoppyfication.sh
 ```
