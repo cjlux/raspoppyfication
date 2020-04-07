@@ -45,24 +45,26 @@ system_setup()
     sudo sed -i 's/^#\s*\(fr_FR.UTF-8 UTF-8\)/\1/g' /etc/locale.gen
     sudo locale-gen
 
-    #JLC: don't know if the stuff bellow must be done with buster ??????
+    #JLC: don't know if the stuff bellow must be done with RPi4 under RaspBian buster ?
     #JLC: => anyway it can always be done by typing "sudo raspi-config" in aterminal !
 
-    #JLC osbolete for RPi4> echo -e "\e[33mEnable camera.\e[0m"
-    #JLC osbolete for RPi4> echo "start_x=1" | sudo tee --append /boot/config.txt
-    #JLC osbolete for RPi4> echo "bcm2835-v4l2" | sudo tee /etc/modules-load.d/bcm2835-v4l2.conf
+    if [ "$(hrpi-version)" = "rpi-3" ]; then
+	echo -e "\e[33mEnable camera.\e[0m"
+    	echo "start_x=1" | sudo tee --append /boot/config.txt
+    	echo "bcm2835-v4l2" | sudo tee /etc/modules-load.d/bcm2835-v4l2.conf
 
-    #JLC osbolete for RPi4> echo -e "\e[33mSetup serial communication.\e[0m"
-    #JLC osbolete for RPi4> sudo raspi-config --disable-serial-log
-    #JLC osbolete for RPi4> sudo tee --append /boot/config.txt > /dev/null <<EOF
-    #JLC osbolete for RPi4> init_uart_clock=16000000
-    #JLC osbolete for RPi4> dtoverlay=pi3-miniuart-bt
-    #JLC osbolete for RPi4> EOF
+    	echo -e "\e[33mSetup serial communication.\e[0m"
+    	sudo raspi-config --disable-serial-log
+    	sudo tee --append /boot/config.txt > /dev/null <<EOF
+init_uart_clock=16000000
+dtoverlay=pi3-miniuart-bt
+EOF
+     fi
 }
 
 install_additional_packages()
 {
-    sudo apt-get update
+    sudo apt-get update && sudo apt upgrade -y && sudo apt autoremove -y
 
     #JLC: added python3-venev & libatalas-base-dev for RaspBian buster:
     sudo apt-get install -y \
@@ -72,7 +74,8 @@ install_additional_packages()
         samba samba-common avahi-autoipd avahi-utils \
         libxslt-dev \
 	python3-venv \
-	libatlas-base-dev
+	libatlas-base-dev \
+	dhcp-client
 
     # board version utility
     #JLC: hrpi-version comptaible rpi-3 & rpi-4 is replaced by the new version included in the zip file
