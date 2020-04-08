@@ -22,7 +22,9 @@ create_virtual_python_env()
 
 install_python_packages()
 {
-    source $HOME/pyenv/bin/activate && pip3 install numpy scipy==1.3.1 jupyter matplotlib explauto wheel
+    source $HOME/pyenv/bin/activate && pip install \
+    	numpy scipy==1.3.1 jupyter matplotlib explauto wheel \
+    	opencv-contrib-python==4.1.0.25 
 }
 
 configure_jupyter()
