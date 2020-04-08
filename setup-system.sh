@@ -75,7 +75,7 @@ install_additional_packages()
         libxslt-dev \
 	python3-venv \
 	libatlas-base-dev \
-	dhcp-client
+	dhcpcd5
 
     # board version utility
     #JLC: hrpi-version comptaible rpi-3 & rpi-4 is replaced by the new version included in the zip file
