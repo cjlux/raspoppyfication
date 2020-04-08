@@ -67,7 +67,7 @@ install_additional_packages()
     sudo apt-get update && sudo apt upgrade -y && sudo apt autoremove -y
 
     #JLC: added python3-venev & libatalas-base-dev for RaspBian buster:
-    sudo apt-get install -y \
+    sudo apt-get install -y --install-suggests \
         build-essential unzip whois \
         network-manager \
         git \
