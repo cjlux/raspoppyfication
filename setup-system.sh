@@ -67,15 +67,15 @@ install_additional_packages()
     sudo apt-get update && sudo apt upgrade -y && sudo apt autoremove -y
 
     #JLC: added python3-venev & libatalas-base-dev for RaspBian buster:
+    #JLC-2020/04/08: removed samba* & dhcpcd
     sudo apt-get install -y --install-suggests \
         build-essential unzip whois \
         network-manager \
         git \
-        samba samba-common avahi-autoipd avahi-utils \
+        avahi-autoipd avahi-utils \
         libxslt-dev \
 	python3-venv \
-	libatlas-base-dev \
-	dhcpcd5
+	libatlas-base-dev 
 
     # board version utility
     #JLC: hrpi-version comptaible rpi-3 & rpi-4 is replaced by the new version included in the zip file
