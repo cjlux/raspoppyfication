@@ -80,7 +80,7 @@ Wants=network-online.target
 After=network.target network-online.target
 
 [Service]
-PIDFile=/var/run/jupyter-notebook.pid
+PIDFile=/run/jupyter-notebook.pid
 Environment="PATH=$PATH"
 ExecStart=$HOME/pyenv/bin/jupyter notebook
 User=poppy
