@@ -68,7 +68,7 @@ install_additional_packages()
 
     #JLC: added python3-venev & libatalas-base-dev for RaspBian buster:
     #JLC-2020/04/08: removed samba* & dhcpcd, added libhdf5-dev libhdf5-serial-dev libjasper-dev for opencv
-    sudo apt-get install -y --install-suggests \
+    sudo apt-get install -y \
         build-essential unzip whois \
         network-manager \
         git \
