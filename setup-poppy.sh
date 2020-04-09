@@ -218,6 +218,16 @@ set_logo()
     echo cat "$HOME/.poppy_logo" >> "$HOME/.bashrc"
 }
 
+patch_IKpy()
+{
+    file_path=$(find $HOME/pyenv -name URDF_utils.py > /dev/null)
+    if [ ! -z "$filepath" ]; then
+	echo "patching file patch-IKpy.py"
+	cp $file_path ${file_path}.orig
+        python patch-IKpy.py $file_path
+    fi	
+}
+
 install_poppy_libraries
 populate_notebooks
 setup_puppet_master
@@ -225,3 +235,5 @@ autostartup_webinterface
 redirect_port80_webinterface
 setup_update
 set_logo
+patch_IKpy
+
