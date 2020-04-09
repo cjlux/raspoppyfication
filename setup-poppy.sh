@@ -158,7 +158,7 @@ Wants=network-online.target
 After=network.target network-online.target
 
 [Service]
-PIDFile=/var/run/puppet-master.pid
+PIDFile=/run/puppet-master.pid
 Environment="PATH=$PATH"
 ExecStart=$HOME/pyenv/bin/python bouteillederouge.py
 User=poppy
