@@ -25,6 +25,7 @@ else:
         code = F.read()
 
     code = code.replace(target, patch)
+    code = code.replace("_, contours, _ = cv2.findContours(edges.copy(),", "contours, _ = cv2.findContours(edges.copy(),")
     with open(file_path, 'w') as F:
         F.write(code)
 
