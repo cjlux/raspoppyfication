@@ -8,14 +8,11 @@ file_path = args.detect_path
 
 target = "from matplotlib.mlab import find"
 patch = \
-"""#raspoppyfication:
-try:
-    from matplotlib.mlab import find
-except:
-    from numpy import nonzero, ravel
-    def find(condition):
-        res, = nonzero(ravel(condition))
-        return res
+"""#raspoppyfication-python3.7:
+from numpy import nonzero, ravel
+def find(condition):
+   res, = nonzero(ravel(condition))
+   return res
 """      
 
 if not os.path.exists(file_path):
