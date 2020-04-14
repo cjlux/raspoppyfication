@@ -220,11 +220,21 @@ set_logo()
 
 patch_IKpy()
 {
-    file_path=$(find $HOME/pyenv -name URDF_utils.py > /dev/null)
+    file_path=$(find $HOME/pyenv/lib/python3.7/site-packages/ikpy -name URDF_utils.py > /dev/null)
     if [ ! -z "$filepath" ]; then
 	echo "patching file patch-IKpy.py"
 	cp $file_path ${file_path}.orig
         python patch-IKpy.py $file_path
+    fi	
+}
+
+patch_hampy()
+{
+    file_path=$(find $HOME/pyenv/lib/python3.7/site-packages/hampy -name detect.py > /dev/null)
+    if [ ! -z "$filepath" ]; then
+	echo "patching file patch-IKpy.py"
+	cp $file_path ${file_path}.orig
+        python patch-hampy.py $file_path
     fi	
 }
 
@@ -236,4 +246,5 @@ redirect_port80_webinterface
 setup_update
 set_logo
 patch_IKpy
+patch-hampy
 
